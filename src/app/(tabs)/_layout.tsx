@@ -30,16 +30,30 @@ const TabLayout = () => {
           marginHorizontal: tabBar.horizontalInset,
           borderRadius: tabBar.radius,
           backgroundColor: colors.primary,
-          borderTopWidth: 0,
-          elevation: 0,
+          // borderTopWidth: 0,
+          // elevation: 0,
+
+           /* --- DEBUG BORDER --- */
+          borderWidth: 2,
+          borderColor: '#ef4444', // 🔴 Red: Outermost bar
         },
         tabBarItemStyle: {
-          paddingVertical: tabBar.height / 2 - tabBar.iconFrame / 1.6
+          paddingVertical: tabBar.height / 2 - tabBar.iconFrame / 1.6,
+          height: tabBar.height,
+          backgroundColor: `${colors.success}80`,
+          // overflow: 'hidden',
+          /* --- DEBUG BORDER --- */
+          borderWidth: 2,
+          borderColor: '#eab308', // 🟡 Yellow: Each tab slot
         },
         tabBarIconStyle: {
           width: tabBar.iconFrame,
           height: tabBar.iconFrame,
           alignItems: 'center',
+
+          /* --- DEBUG BORDER --- */
+          borderWidth: 2,
+          borderColor: '#22c55e', // 🟢 Green: 48x48 icon frame
         }
       }}
     >
