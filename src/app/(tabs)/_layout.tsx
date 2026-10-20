@@ -2,7 +2,7 @@ import { tabs } from '@/constants/data';
 import { colors, components } from '@/constants/theme';
 import clsx from "clsx";
 import { Tabs } from 'expo-router';
-import { Image, View } from 'react-native';
+import { View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const tabBar = components.tabBar;
@@ -10,11 +10,24 @@ const tabBar = components.tabBar;
 const TabLayout = () => {
   const insets = useSafeAreaInsets();
 
-  const TabIcon = ({focused, icon}: TabIconProps) => (
-    <View className='tab-icons'>
+  // const TabIcon = ({focused, icon}: TabIconProps) => (
+  //   <View className='tab-icons'>
+  //     <View className={clsx('tabs-pill', focused && 'tabs-active')}>
+  //       <Image source={icon} resizeMode='contain' className='tabs-glyph' />
+  //     </View>
+  //   </View>
+  // );
+
+  const TabIcon = ({focused, icon: Icon}: TabIconProps) => (
+    <View className='tab-icons'>\
       <View className={clsx('tabs-pill', focused && 'tabs-active')}>
-        <Image source={icon} resizeMode='contain' className='tabs-glyph' />
+        <Icon 
+          size={24}
+          color={focused ? colors.background : colors.muted}
+          weight={focused ? 'fill' : 'regular'}
+        />
       </View>
+
     </View>
   );
 
