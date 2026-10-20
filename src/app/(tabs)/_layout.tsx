@@ -2,7 +2,7 @@ import { tabs } from '@/constants/data';
 import { colors, components } from '@/constants/theme';
 import clsx from "clsx";
 import { Tabs } from 'expo-router';
-import { View } from 'react-native';
+import { Image, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const tabBar = components.tabBar;
@@ -10,22 +10,10 @@ const tabBar = components.tabBar;
 const TabLayout = () => {
   const insets = useSafeAreaInsets();
 
-  // const TabIcon = ({focused, icon}: TabIconProps) => (
-  //   <View className='tab-icons'>
-  //     <View className={clsx('tabs-pill', focused && 'tabs-active')}>
-  //       <Image source={icon} resizeMode='contain' className='tabs-glyph' />
-  //     </View>
-  //   </View>
-  // );
-
-  const TabIcon = ({focused, icon: Icon}: TabIconProps) => (
+  const TabIcon = ({focused, icon}: TabIconProps) => (
     <View className='tab-icons'>
       <View className={clsx('tabs-pill', focused && 'tabs-active')}>
-        {/* <Icon 
-          size={24}
-          color={focused ? colors.background : colors.muted}
-          weight={focused ? 'fill' : 'regular'}
-        /> */}
+        <Image source={icon} resizeMode='contain' className='tabs-glyph' />
       </View>
 
     </View>
@@ -43,30 +31,17 @@ const TabLayout = () => {
           marginHorizontal: tabBar.horizontalInset,
           borderRadius: tabBar.radius,
           backgroundColor: colors.primary,
-          // borderTopWidth: 0,
-          // elevation: 0,
-
-           /* --- DEBUG BORDER --- */
-          borderWidth: 2,
-          borderColor: '#ef4444', // 🔴 Red: Outermost bar
+          borderTopWidth: 0,
+          elevation: 0,
         },
         tabBarItemStyle: {
           paddingVertical: tabBar.height / 2 - tabBar.iconFrame / 1.6,
           height: tabBar.height,
-          backgroundColor: `${colors.success}80`,
-          // overflow: 'hidden',
-          /* --- DEBUG BORDER --- */
-          borderWidth: 2,
-          borderColor: '#eab308', // 🟡 Yellow: Each tab slot
         },
         tabBarIconStyle: {
           width: tabBar.iconFrame,
           height: tabBar.iconFrame,
           alignItems: 'center',
-
-          /* --- DEBUG BORDER --- */
-          borderWidth: 2,
-          borderColor: '#22c55e', // 🟢 Green: 48x48 icon frame
         }
       }}
     >
